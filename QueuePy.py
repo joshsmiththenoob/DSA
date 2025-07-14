@@ -25,7 +25,7 @@ class Queue():
 
     def enqueue(self, v: int):
         node = Node(v)
-        if (self.first == None):
+        if (self.first is None):
             # if empty
             self.first = node
             self.last = node
@@ -39,7 +39,7 @@ class Queue():
     
     def dequeue(self):
         # return the dequeue of first guy
-        if (self.first == None):
+        if (self.first is None):
             # if empty
             raise IndexError("No element to dequeue")
         temp_node = self.first
@@ -58,7 +58,7 @@ class Queue():
 
     def print_queue(self):
         temp = self.first
-        while (temp != None):
+        while (temp is not None):
             print(temp.value)
             temp = temp.next
 

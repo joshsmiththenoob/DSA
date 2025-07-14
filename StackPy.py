@@ -27,7 +27,7 @@ class Stack():
     
     def print_stack(self):
         temp = self.top
-        while (temp != None):
+        while (temp is not None):
             print(temp.value)
             temp = temp.next
 
@@ -37,7 +37,7 @@ class Stack():
         node = Node(v)
 
         # boundary condition 1: if empty
-        if (self.top == None):
+        if (self.top is None):
             self.top = node
         else:
             node.next = self.top
@@ -50,7 +50,7 @@ class Stack():
     def pop(self):
         # return top node of stack we want to pop
         # boundary condition: if empty
-        if (self.top == None):
+        if (self.top is None):
             raise IndexError("Stack is empty. No element to pop")
         
         temp = self.top
