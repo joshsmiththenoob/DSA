@@ -46,7 +46,8 @@ def is_balanced_parentheses(paratheses: str):
             pop_element = stack.pop()
             if (pop_element is None):
                 return False
-    return True
+    return stack.is_empty()
+
 
 def test_is_balanced_parentheses():
     try:
@@ -59,7 +60,7 @@ def test_is_balanced_parentheses():
         assert is_balanced_parentheses('()') == True
         print('Test case 2 passed')
     except AssertionError:
-        print('Test case 2 failed')
+        print('Test case 2 failed') 
 
     try:
         assert is_balanced_parentheses('(()())') == True
