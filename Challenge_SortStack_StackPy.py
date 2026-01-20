@@ -38,9 +38,21 @@ class Stack:
 #  <- INDENT ALL THE WAY TO THE LEFT <-  #
 #                                        #
 ##########################################
+def sort_stack(input_stack: Stack):
 
+    sorted_stack = Stack()
+    temp = None
 
+    if sorted_stack.is_empty():
+        temp = input_stack.pop()
+        sorted_stack.push(temp)
 
+    while (not sorted_stack.is_empty() and not input_stack.is_empty()):
+        temp = input_stack.pop()
+        if (temp < sorted_stack.peek()):
+            input_stack.push(sorted_stack.pop())
+            sorted_stack.push(temp)
+        
 
 my_stack = Stack()
 my_stack.push(3)
