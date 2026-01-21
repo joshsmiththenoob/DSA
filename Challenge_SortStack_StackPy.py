@@ -38,28 +38,56 @@ class Stack:
 #  <- INDENT ALL THE WAY TO THE LEFT <-  #
 #                                        #
 ##########################################
+"""
+My Solution
+sort_stack 題目的關鍵是遵守測試契約：in-place（同一個 stack） vs return new stack。
+我把元素搬到另一個 stack 後沒搬回來 → 原 stack 變空 → 測試 pop 出 None。 
+call 完 sort_stack(stack) 後，stack.size() 應該還是原本大小嗎？top 方向是最小還最大？
+"""
+# def sort_stack(input_stack: Stack):
+
+#     sorted_stack = Stack()
+#     temp = None
+
+#     if (sorted_stack.is_empty()) and (not input_stack.is_empty()):
+#         temp = input_stack.pop()
+#         sorted_stack.push(temp)
+
+#     while (not sorted_stack.is_empty() and not input_stack.is_empty()):
+#         temp = input_stack.pop()
+#         print("Temp value: ", temp)
+#         while (not sorted_stack.is_empty() and temp > sorted_stack.peek()  ):
+#             input_stack.push(sorted_stack.pop())
+#         sorted_stack.push(temp)
+            
+        
+#     return sorted_stack
+
+"""
+Another solution from hint
+"""
 def sort_stack(input_stack: Stack):
-
     sorted_stack = Stack()
-    temp = None
 
-    if sorted_stack.is_empty():
+    while (not input_stack.is_empty()):
         temp = input_stack.pop()
+
+        while (not sorted_stack.is_empty() and sorted_stack.peek() > temp):
+            input_stack.push(sorted_stack.pop())
+
         sorted_stack.push(temp)
 
-    while (not sorted_stack.is_empty() and not input_stack.is_empty()):
-        temp = input_stack.pop()
-        if (temp < sorted_stack.peek()):
-            input_stack.push(sorted_stack.pop())
-            sorted_stack.push(temp)
-        
+    while (not sorted_stack.is_empty()):
+        input_stack.push(sorted_stack.pop())
 
 my_stack = Stack()
 my_stack.push(3)
+my_stack.push(0)
 my_stack.push(1)
-my_stack.push(5)
+my_stack.push(-1)
 my_stack.push(4)
 my_stack.push(2)
+my_stack.push(99)
 
 print("Stack before sort_stack():")
 my_stack.print_stack()
@@ -68,7 +96,6 @@ sort_stack(my_stack)
 
 print("\nStack after sort_stack:")
 my_stack.print_stack()
-
 
 
 """
